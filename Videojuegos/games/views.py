@@ -7,11 +7,11 @@ from .forms import GamesForm, RequerimientosFrom
 # Create your views here.
 def lista_juegos(request):
     juegos = games.objects.select_related('requerimientos_sistema').all()
-    return render(request, 'juegos/lista_juegos.html', {'juegos': juegos})
+    return render(request, 'games/lista_juegos.html', {'juegos': juegos})
 
 def detalle_juego(request, id):
     juego = get_object_or_404(games.objects.select_related('requerimientos_sistema'), id=id)
-    return render(request, 'juegos/detalle_juego.html', {'juego': juego})
+    return render(request, 'gamesuegos/detalle_juego.html', {'juego': juego})
 
 def crear_juego(request):
     juego_data = None
@@ -68,7 +68,7 @@ def crear_juego(request):
             juego.save()
             return redirect('lista_juegos')
 
-    return render(request, 'juegos/form_juego.html', {
+    return render(request, 'games/form_juego.html', {
         'game_form': game_form,
         'req_form': req_form,
         'juego_data': juego_data
@@ -86,7 +86,7 @@ def editar_juego(request, id):
     else:
         form = GamesForm(instance=juego)
 
-    return render(request, 'juegos/editar_juego.html', {'form': form, 'juego': juego})
+    return render(request, 'games/editar_juego.html', {'form': form, 'juego': juego})
 
 
 def eliminar_juego(request, id):
@@ -96,4 +96,4 @@ def eliminar_juego(request, id):
         juego.delete()
         return redirect('lista_juegos')
 
-    return render(request, 'juegos/confirmar_eliminacion.html', {'juego': juego})
+    return render(request, 'games/confirmar_eliminacion.html', {'juego': juego})
