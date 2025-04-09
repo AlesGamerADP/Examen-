@@ -1,0 +1,33 @@
+{% extends 'juegos/base.html' %}
+
+{% block title %}Lista de Juegos{% endblock %}
+
+{% block content %}
+<h1>Lista de Juegos</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Editor</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for juego in juegos %}
+        <tr>
+            <td>{{ juego.titulo }}</td>
+            <td>{{ juego.genero }}</td>
+            <td>{{ juego.estado }}</td>
+            <td>{{ juego.editor }}</td>
+            <td class="acciones">
+                <a class="btn ver" href="{% url 'detalle_juego' juego.pk %}">Ver</a>
+                <a class="btn editar" href="{% url 'editar_juego' juego.pk %}">Editar</a>
+                <a class="btn eliminar" href="{% url 'eliminar_juego' juego.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

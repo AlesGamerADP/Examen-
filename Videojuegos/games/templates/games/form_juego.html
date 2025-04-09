@@ -1,0 +1,14 @@
+{% extends 'juegos/base.html' %}
+
+{% block title %}Crear Juego{% endblock %}
+
+{% block content %}
+<h2>Crear Juego</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-t">Guardar</button>
+    <a class="btn cancelar" href="{% url 'lista_juegos' %}">Cancelar</a>
+</form>
+{% endblock %}

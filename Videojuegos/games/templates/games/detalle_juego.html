@@ -1,0 +1,31 @@
+{% extends 'juegos/base.html' %}
+
+{% block title %}Detalle de {{ juego.titulo }}{% endblock %}
+
+{% block content %}
+<h1>Detalle de {{ juego.titulo }}</h1>
+<div class="detalle">
+    <img src="{{ juego.imagen }}" alt="{{ juego.titulo }}">
+    <p><strong>Género:</strong> {{ juego.genero }}</p>
+    <p><strong>Estado:</strong> {{ juego.estado }}</p>
+    <p><strong>Descripción:</strong> {{ juego.descricpcion }}</p>
+    <p><strong>Editor:</strong> {{ juego.editor }}</p>
+    <p><strong>Fecha de lanzamiento:</strong> {{ juego.fecha }}</p>
+    <p><strong>URL:</strong> <a href="{{ juego.game_url }}" target="_blank">{{ juego.game_url }}</a></p>
+
+    <h3>Requisitos del Sistema</h3>
+    <ul>
+        <li><strong>Sistema:</strong> {{ juego.requerimientos_sistema.sistema }}</li>
+        <li><strong>Procesador:</strong> {{ juego.requerimientos_sistema.procesador }}</li>
+        <li><strong>Memoria:</strong> {{ juego.requerimientos_sistema.memoria }}</li>
+        <li><strong>Gráfica:</strong> {{ juego.requerimientos_sistema.grafica }}</li>
+        <li><strong>Almacenamiento:</strong> {{ juego.requerimientos_sistema.almacenamiento }}</li>
+    </ul>
+
+    <div class="detalle-acciones">
+        <a class="btn editar" href="{% url 'editar_juego' juego.pk %}">Editar</a>
+        <a class="btn eliminar" href="{% url 'eliminar_juego' juego.pk %}">Eliminar</a>
+        <a class="btn volver" href="{% url 'lista_juegos' %}">Volver</a>
+    </div>|
+</div>
+{% endblock %}

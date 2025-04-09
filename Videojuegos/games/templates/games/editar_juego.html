@@ -1,0 +1,13 @@
+{% extends 'juegos/base.html' %}
+
+{% block title %}Editar {{ juego.titulo }}{% endblock %}
+
+{% block content %}
+<h1>Editar Juego: {{ juego.titulo }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-t">Guardar cambios</button>
+    <a href="{% url 'lista_juegos' %}" class="btn volver">Volver</a>
+</form>
+{% endblock %}

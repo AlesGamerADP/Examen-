@@ -11,4 +11,4 @@ class RequerimientosFrom():
 class GamesForm(forms.ModelForm):
     class Meta:
         model = games
-        fields = ['titulo', 'estado', 'imagen', 'descripcion_pequeña', 'descricpcion', 'genero', 'editor', 'fecha',' game_url','requerimientos_sistema']
+        fields = ['titulo', 'estado', 'imagen', 'descripcion_pequeña', 'descricpcion', 'genero', 'editor', 'fecha', 'game_url', 'requerimientos_sistema']
